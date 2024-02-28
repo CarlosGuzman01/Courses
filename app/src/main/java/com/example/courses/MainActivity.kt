@@ -78,10 +78,6 @@ fun CourseItem(
 
                     )
 
-                Text(
-                    text = "Testing this line of code 123 "
-                )
-
                 Row {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_grain),
