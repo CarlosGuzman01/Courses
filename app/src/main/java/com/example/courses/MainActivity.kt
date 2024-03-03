@@ -70,7 +70,7 @@ fun CourseItem(
             Image(
                 painter = painterResource(courseTopic.courseImage),
                 contentDescription = null,
-                modifier = Modifier.size(68.dp, 68.dp).aspectRatio(1f),
+                modifier = Modifier.size(68.dp, 68.dp),
                 contentScale = ContentScale.Crop
             )
             
@@ -83,7 +83,6 @@ fun CourseItem(
                 Text(
                     text = stringResource(id = courseTopic.courseName),
                     style = MaterialTheme.typography.bodyMedium
-
                     )
 
                 Spacer(modifier = Modifier.height(8.dp))
