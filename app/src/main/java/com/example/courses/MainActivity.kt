@@ -7,8 +7,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -20,6 +23,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -45,7 +49,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
 @Composable
 fun CoursesApp(modifier: Modifier = Modifier) {
 
@@ -53,7 +56,6 @@ fun CoursesApp(modifier: Modifier = Modifier) {
     val coursesList = DataSource.topics
 
     CourseList(courseList = coursesList)
-
 
 }
 
@@ -67,29 +69,39 @@ fun CourseItem(
         Row {
             Image(
                 painter = painterResource(courseTopic.courseImage),
-                contentDescription = null
+                contentDescription = null,
+                modifier = Modifier.size(68.dp, 68.dp).aspectRatio(1f),
+                contentScale = ContentScale.Crop
             )
             
             Spacer(modifier = Modifier.width(16.dp))
 
             Column {
+                
+                Spacer(modifier = Modifier.height(16.dp))
+                
                 Text(
                     text = stringResource(id = courseTopic.courseName),
+                    style = MaterialTheme.typography.bodyMedium
 
                     )
+
+                Spacer(modifier = Modifier.height(8.dp))
 
                 Row {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_grain),
                         contentDescription = null
                     )
+                    
+                    Spacer(modifier = Modifier.width(8.dp))
 
                     Text(
-                        text = courseTopic.courseNumber.toString()
+                        text = courseTopic.courseNumber.toString(),
+                        style = MaterialTheme.typography.labelMedium
                     )
                 }
             }
-
         }
     }
 }
@@ -112,7 +124,6 @@ fun CourseList(
     )
     
 }
-
 
 @Preview(showBackground = true)
 @Composable
